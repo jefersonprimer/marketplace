@@ -1,0 +1,13 @@
+# Supabase Configuration (Recomendado)
+SUPABASE_URL=your_supabase_database_url_here
+SUPABASE_ANON_KEY=your_supabase_anon_key_here
+
+# Database Configuration (Fallback para PostgreSQL local)
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=marketplace
+
+# Server Configuration
+PORT=8080

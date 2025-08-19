@@ -1,0 +1,75 @@
+type Category {
+  id: ID!
+  name: String!
+  slug: String!
+  parent: Category
+}
+
+type Product {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String
+  price: Float!
+  stock: Int!
+  status: ProductStatus!
+  imageUrl: String
+  category: Category!
+  store: Store!
+}
+
+type Store {
+    id: ID!
+    name: String!
+    slug: String!
+    description: String
+    logoUrl: String
+    bannerUrl: String
+}
+
+enum ProductStatus {
+  ACTIVE
+  INACTIVE
+  OUT_OF_STOCK
+}
+
+type Query {
+  categories: [Category!]!
+  category(id: ID!): Category
+  products(categoryID: ID): [Product!]!
+  product(id: ID!): Product
+  stores: [Store!]!
+  store(id: ID!): Store
+}
+
+input NewCategory {
+  name: String!
+  slug: String!
+  parentId: ID
+}
+
+input NewProduct {
+  name: String!
+  slug: String!
+  description: String
+  price: Float!
+  stock: Int!
+  status: ProductStatus!
+  imageUrl: String
+  categoryId: ID!
+  storeId: ID!
+}
+
+input NewStore {
+  name: String!
+  slug: String!
+  description: String
+  logoUrl: String
+  bannerUrl: String
+}
+
+type Mutation {
+  createCategory(input: NewCategory!): Category!
+  createProduct(input: NewProduct!): Product!
+  createStore(input: NewStore!): Store!
+}
